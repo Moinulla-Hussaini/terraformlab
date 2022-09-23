@@ -1,0 +1,20 @@
+-  name: Playbook to set up httpd
+   hosts: localhost
+   become: true
+   
+   tasks:
+    - name: Install Httpd
+      ansible.builtin.package:
+        name: httpd
+        state: latest
+    - name: Copy index.html
+      ansible.builtin.copy:
+       src: /home/ec2-user/terraformlab/index.html
+       dest: /var/www/html
+       mode: 0644
+       owner: root
+       group: root
+    - name: Start Http server
+      ansible.builtin.service:
+        name: httpd
+        state: started
