@@ -9,7 +9,7 @@
         state: latest
     - name: Copy index.html
       ansible.builtin.copy:
-       src: /home/ec2-user/terraformlab/index.html
+       src: index.html
        dest: /var/www/html
        mode: 0644
        owner: root
